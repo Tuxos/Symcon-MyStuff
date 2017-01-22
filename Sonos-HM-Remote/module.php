@@ -9,7 +9,7 @@
 		$this->RegisterPropertyInteger("idsonos", "");
 		$this->RegisterPropertyString("ipadressccu", "192.168.1.8");
 		$this->RegisterPropertyString("serial6t", "NEQ0434752");
-		$this->RegisterPropertyString("iddisplay", "");
+		$this->RegisterPropertyString("serialdisplay", "NEQ1593741");
 		$this->RegisterPropertyString("zeile1", "Temperatur");
 		$this->RegisterPropertyString("zeile2", "Garten");
 		$this->RegisterPropertyInteger("idvar", "");
@@ -27,7 +27,7 @@
 		}
 		if (($this->ReadPropertyString("iddisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != ""))
 			{
-				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipaddressccu":'.$this->ReadPropertyString("ipadressccu").',"serialnumer":'.$this->ReadPropertyString("ipadressccu").'}');
+				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipaddressccu":'.$this->ReadPropertyString("ipadressccu").',"serialnumber":'.$this->ReadPropertyString("serialdisplay").'}');
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
 			}
 
