@@ -1,9 +1,9 @@
 {
     "elements":
     [
-        { "type": "SelectInstance" , "name" : "iddisplay", "caption": "Objekt ID Display" },
         { "type": "SelectInstance" , "name" : "idsonos", "caption": "Objekt ID Sonos" },
-	   { "type": "ValidationTextBox" , "name" : "serial6t", "caption": "Seriennummer 6fach Taster" },
+	   { "type": "ValidationTextBox" , "name" : "serial6t", "caption": "Seriennum. 6er Taster" },
+	   { "type": "ValidationTextBox" , "name" : "iddisplay", "caption": "Seriennum. Display" },
 	   { "type": "ValidationTextBox" , "name" : "zeile1", "caption": "Anzeige Zeile 1" },
 	   { "type": "ValidationTextBox" , "name" : "zeile2", "caption": "Anzeige Zeile 2" },
 	   { "type": "SelectVariable" , "name" : "idvar", "caption": "Anzeige Variable" }
@@ -11,7 +11,7 @@
     "actions":
     [
 
-	{ "type": "Button", "label": "Lese Konfiguration ein", "onClick": "YL_readdata($id);" }
+	{ "type": "Button", "label": "Lese Konfiguration ein", "onClick": "echo $this->ReadPropertyString('idsonos');" }
 
     ],
     "status":
