@@ -19,7 +19,7 @@
 
 		parent::ApplyChanges();
 
-		if (($this->ReadPropertyString("iddisplay") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != "")
+		if (($this->ReadPropertyString("iddisplay") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != ""))
 			{
 				$this->SetStatus(102);
 			} else {
