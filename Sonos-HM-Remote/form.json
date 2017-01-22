@@ -2,6 +2,7 @@
     "elements":
     [
         { "type": "SelectInstance" , "name" : "idsonos", "caption": "Objekt ID Sonos" },
+	   { "type": "ValidationTextBox" , "name" : "ipadressccu", "caption": "IP Adresse HM CCU" },
 	   { "type": "ValidationTextBox" , "name" : "serial6t", "caption": "Seriennum. 6er Taster" },
 	   { "type": "ValidationTextBox" , "name" : "iddisplay", "caption": "Seriennum. Display" },
 	   { "type": "ValidationTextBox" , "name" : "zeile1", "caption": "Anzeige Zeile 1" },
