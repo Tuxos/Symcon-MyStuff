@@ -27,7 +27,7 @@
 					IPS_SetName($InsID, "Display Taster");
 					IPS_SetParent($InsID, $this->InstanceID);
 				}
-				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipaddressccu":'.$this->ReadPropertyString("ipadressccu").',"serialnumber":'.$this->ReadPropertyString("serialdisplay").'}');
+				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipadress":'.$this->ReadPropertyString("ipadressccu").',"serialnumber":'.$this->ReadPropertyString("serialdisplay").'}');
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
 			}
 
