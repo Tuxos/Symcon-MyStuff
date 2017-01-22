@@ -39,8 +39,9 @@
 				IPS_SetConfiguration(@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID), '{"serialnumber":"'.$this->ReadPropertyString("serial6t").'"}');
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID));
 
-				if (@IPS_GetEventIDByName("when title change", $this->InstanceID) == false) {
+				if (@IPS_GetEventIDByName("when title change", $this->InstanceID) != true) {
 					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
 					IPS_SetName($eid, "when title change");
 				}
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("when title change", $this->InstanceID), 1, IPS_GetObjectIDByName("Title", $this->ReadPropertyString("idsonos")));
