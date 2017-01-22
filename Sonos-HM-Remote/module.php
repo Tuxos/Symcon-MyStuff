@@ -48,6 +48,15 @@
 				IPS_SetEventScript(@IPS_GetEventIDByName("when title change", $this->InstanceID), "HMSR_anzeigeTitel($this->InstanceID);");
 				IPS_SetEventActive(@IPS_GetEventIDByName("when title change", $this->InstanceID), true);
 
+				if (@IPS_GetEventIDByName("when var change", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "when var change");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("when var change", $this->InstanceID), 1, $this->ReadPropertyString("idvar"));
+				IPS_SetEventScript(@IPS_GetEventIDByName("when var change", $this->InstanceID), "HMSR_anzeigePause($this->InstanceID);");
+				IPS_SetEventActive(@IPS_GetEventIDByName("when var change", $this->InstanceID), true);
+
 			}
 
 		if (($this->ReadPropertyString("serialdisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != ""))
@@ -67,7 +76,7 @@
 		$titel = GetValue(IPS_GetObjectIDByName("Title", $this->ReadPropertyString("idsonos")));
 
 		if ($titel == "") {
-			HMDIS_writeDisplay($displayid,  $this->ReadPropertyString("zeile1"), $this->ReadPropertyString("zeile2"), $temperatur.$this->ReadPropertyString("postfix"), "", "", "", "0XF0", "0xC0");
+			HMDIS_writeDisplay($displayid, $this->ReadPropertyString("zeile1"), $this->ReadPropertyString("zeile2"), $temperatur.$this->ReadPropertyString("postfix"), "", "", "", "0XF0", "0xC0");
 			}
 
 
