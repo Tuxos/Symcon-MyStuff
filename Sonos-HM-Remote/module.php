@@ -43,7 +43,7 @@
 					$eid = IPS_CreateEvent(0);
 					IPS_SetName($eid, "when title change");
 					IPS_SetEventTrigger($eid, 1, IPS_GetObjectIDByName("Title", $this->ReadPropertyString("idsonos")));
-					IPS_SetEventScript($eid, "HMSR_anzeigeTitel($this->InstanceID);")
+					IPS_SetEventScript($eid, "HMSR_anzeigeTitel($this->InstanceID);");
 					IPS_SetEventActive($eid, true);
 				}
 
