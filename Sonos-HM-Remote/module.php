@@ -13,6 +13,7 @@
 		$this->RegisterPropertyString("zeile1", "Temperatur");
 		$this->RegisterPropertyString("zeile2", "Garten");
 		$this->RegisterPropertyInteger("idvar", "");
+		$this->RegisterPropertyString("postfix", "c");
 
 	}
 
@@ -38,6 +39,13 @@
 				IPS_SetConfiguration(@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID), '{"serialnumber":"'.$this->ReadPropertyString("serial6t").'"}');
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID));
 
+				if (@IPS_GetEventIDByName("when title change") == false) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetName($eid, "when title change");
+					IPS_SetEventTrigger($eid, 1, IPS_GetObjectIDByName("Title", $this->ReadPropertyString("idsonos")));
+					IPS_SetEventScript($eid, "HMSR_anzeigeTitel($this->InstanceID);")
+					IPS_SetEventActive($eid, true);
+				}
 
 			}
 
@@ -50,11 +58,44 @@
 
 	}
 
-	// Zeige Sonos ID
-	public function showid() {
+	// Anzeige wenn keine Musik spielt
+	public function anzeigePause() {
 
-		echo $this->ReadPropertyString('idsonos');
+		$temperatur = GetValue($this->ReadPropertyString("idvar"));
+		$displayid = GetValue(IPS_GetObjectIDByName("Display Taster", $this->InstanceID));
+		$titel = GetValue(IPS_GetObjectIDByName("Title", $this->ReadPropertyString("idsonos")));
 
+		if ($titel == "") {
+			HMDIS_writeDisplay($displayid,  $this->ReadPropertyString("zeile1"), $this->ReadPropertyString("zeile2"), $temperatur.$this->ReadPropertyString("postfix"), "", "", "", "0XF0", "0xC0");
+			}
+
+
+		}
+
+	// Anzeige wenn Musik spielt
+	public function anzeigeTitel() {
+
+		$temperatur = GetValue($this->ReadPropertyString("idvar"));
+		$displayid = GetValue(IPS_GetObjectIDByName("Display Taster", $this->InstanceID));
+		$sonosid =  $this->ReadPropertyString("idsonos");
+
+		$titel = GetValue(IPS_GetObjectIDByName("Title", $sonosid));
+		$artist = GetValue(IPS_GetObjectIDByName("Artist", $sonosid));
+		$album = GetValue(IPS_GetObjectIDByName("Album", $sonosid));
+
+		$titel1= substr($titel ,0, 12);
+		$titel2= substr($titel, 12);
+
+		if ($titel1 == "") $titel1 = " ";
+		if (($titel2 == "") && ($album == "")) $titel2 = " ";
+		if (($titel2 == "") && ($album != "")) $titel2 = $album;
+		if ($artist == "") $artist = " ";
+
+   		if ($titel == "") {
+			HMSR_anzeigePause($this->InstanceID);
+			} else {
+			HMDIS_writeDisplay($displayid, $titel1, $titel2, $artist, "", "", "", "0XF0", "0xC0");
+		}
 
 		}
 

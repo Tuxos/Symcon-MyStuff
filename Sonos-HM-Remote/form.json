@@ -7,12 +7,13 @@
 	   { "type": "ValidationTextBox" , "name" : "serialdisplay", "caption": "Seriennum. Display" },
 	   { "type": "ValidationTextBox" , "name" : "zeile1", "caption": "Anzeige Zeile 1" },
 	   { "type": "ValidationTextBox" , "name" : "zeile2", "caption": "Anzeige Zeile 2" },
-	   { "type": "SelectVariable" , "name" : "idvar", "caption": "Anzeige Variable" }
+	   { "type": "SelectVariable" , "name" : "idvar", "caption": "Anzeige Variable" },
+	   { "type": "ValidationTextBox" , "name" : "postfix", "caption": "Postfix nach var" }
     ],
     "actions":
     [
 
-	{ "type": "Button", "label": "Lese Konfiguration ein", "onClick": "HMSR_showid($id);" }
+	{ "type": "Button", "label": "Sende Testnachricht", "onClick": "HMDIS_writeDisplay($id,'Es geht!', 'Test Zeile 2', 'Test Zeile 3' , '0x85', '0x86', '0x87', '0XF3', '0xC4');" }
 
     ],
     "status":
