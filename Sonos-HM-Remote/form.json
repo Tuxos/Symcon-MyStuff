@@ -11,7 +11,7 @@
     "actions":
     [
 
-	{ "type": "Button", "label": "Lese Konfiguration ein", "onClick": "echo $this->ReadPropertyString('idsonos');" }
+	{ "type": "Button", "label": "Lese Konfiguration ein", "onClick": "HMSR_showid($id);" }
 
     ],
     "status":
