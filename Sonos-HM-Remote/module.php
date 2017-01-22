@@ -7,9 +7,9 @@
 		parent::Create();
 
 		$this->RegisterPropertyInteger("idsonos", "");
-		$this->RegisterPropertyString("ipadressccu", "");
-		$this->RegisterPropertyString("serial6t", "");
-		$this->RegisterPropertyString("serialdisplay", "");
+		$this->RegisterPropertyString("ipadressccu", "192.168.1.8");
+		$this->RegisterPropertyString("serial6t", "NEQ0434752");
+		$this->RegisterPropertyString("serialdisplay", "NEQ1593741");
 		$this->RegisterPropertyString("zeile1", "Temperatur");
 		$this->RegisterPropertyString("zeile2", "Garten");
 		$this->RegisterPropertyInteger("idvar", "");
@@ -29,6 +29,10 @@
 				}
 				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipadress":"'.$this->ReadPropertyString("ipadressccu").'","serialnumber":"'.$this->ReadPropertyString("serialdisplay").'"}');
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
+
+				
+
+
 			}
 
 		if (($this->ReadPropertyString("serialdisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != ""))

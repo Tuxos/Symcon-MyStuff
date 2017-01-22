@@ -1,0 +1,16 @@
+{
+    "elements":
+    [
+        { "type": "ValidationTextBox" , "name" : "serialnumber", "caption": "Display Seriennummer" }
+    ],
+    "actions":
+    [
+
+    ],
+    "status":
+    [
+        { "code": 101, "icon": "active", "caption": "HM-PB-6-WM55 Instanz wird erstellt..." },
+        { "code": 102, "icon": "active", "caption": "HM-PB-6-WM55 Instanz ist aktiv" },
+        { "code": 202, "icon": "error", "caption": "Konfiguration falsch oder unvollständig" }
+    ]
+}

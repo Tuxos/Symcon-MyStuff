@@ -1,0 +1,14 @@
+{
+    "id": "{4FA0F15F-50A6-451C-8B03-E76A425C2B94}",
+    "name": "HMPB6WM55",
+    "type": 3,
+    "vendor": "Homematic",
+    "aliases":
+    [
+        "Homematic HM-PB-6-WM55"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "HMPB6"
+}
