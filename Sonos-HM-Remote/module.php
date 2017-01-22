@@ -76,7 +76,7 @@
 	public function anzeigeTitel() {
 
 		$temperatur = GetValue($this->ReadPropertyString("idvar"));
-		$displayid = GetValue(IPS_GetObjectIDByName("Display Taster", $this->InstanceID));
+		$displayid = IPS_GetObjectIDByName("Display Taster", $this->InstanceID);
 		$sonosid =  $this->ReadPropertyString("idsonos");
 
 		$titel = GetValue(IPS_GetObjectIDByName("Title", $sonosid));
