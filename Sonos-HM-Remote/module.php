@@ -7,9 +7,9 @@
 		parent::Create();
 
 		$this->RegisterPropertyInteger("idsonos", "");
-		$this->RegisterPropertyString("ipadressccu", "192.168.1.8");
-		$this->RegisterPropertyString("serial6t", "NEQ0434752");
-		$this->RegisterPropertyString("serialdisplay", "NEQ1593741");
+		$this->RegisterPropertyString("ipadressccu", "");
+		$this->RegisterPropertyString("serial6t", "");
+		$this->RegisterPropertyString("serialdisplay", "");
 		$this->RegisterPropertyString("zeile1", "Temperatur");
 		$this->RegisterPropertyString("zeile2", "Garten");
 		$this->RegisterPropertyInteger("idvar", "");
