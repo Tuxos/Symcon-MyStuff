@@ -20,13 +20,13 @@
 
 		parent::ApplyChanges();
 
-		if (@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID) == false) {
-			$InsID = IPS_CreateInstance("{5961D2DF-90B1-4B98-A45E-B7717BD383C9}");
-			IPS_SetName($InsID, "Display Taster");
-			IPS_SetParent($InsID, $this->InstanceID);
-		}
 		if (($this->ReadPropertyString("iddisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != ""))
 			{
+				if (@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID) == false) {
+					$InsID = IPS_CreateInstance("{5961D2DF-90B1-4B98-A45E-B7717BD383C9}");
+					IPS_SetName($InsID, "Display Taster");
+					IPS_SetParent($InsID, $this->InstanceID);
+				}
 				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipaddressccu":'.$this->ReadPropertyString("ipadressccu").',"serialnumber":'.$this->ReadPropertyString("serialdisplay").'}');
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
 			}
