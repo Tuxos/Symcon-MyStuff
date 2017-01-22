@@ -1,0 +1,23 @@
+{
+    "elements":
+    [
+        { "type": "SelectInstance" , "name" : "iddisplay", "caption": "Objekt ID Display" },
+        { "type": "SelectInstance" , "name" : "idsonos", "caption": "Objekt ID Sonos" },
+	   { "type": "ValidationTextBox" , "name" : "serial6t", "caption": "Seriennummer 6fach Taster" },
+	   { "type": "ValidationTextBox" , "name" : "zeile1", "caption": "Anzeige Zeile 1" },
+	   { "type": "ValidationTextBox" , "name" : "zeile2", "caption": "Anzeige Zeile 2" },
+	   { "type": "SelectVariable" , "name" : "idvar", "caption": "Anzeige Variable" }
+    ],
+    "actions":
+    [
+
+	{ "type": "Button", "label": "Lese Konfiguration ein", "onClick": "YL_readdata($id);" }
+
+    ],
+    "status":
+    [
+        { "code": 101, "icon": "active", "caption": "Sonos HM Remote Instanz wird erstellt..." },
+        { "code": 102, "icon": "active", "caption": "Sonos HM Remote Instanz ist aktiv" },
+        { "code": 202, "icon": "error", "caption": "Konfiguration falsch oder unvollständig" }
+    ]
+}

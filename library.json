@@ -1,0 +1,12 @@
+{
+    "id": "{C2B4F8CA-6A43-49D1-A1E2-3D9E39E5D3F3}",
+    "author": "Dennis Deitermann",
+    "name": "MyStuff",
+    "url": "https://github.com/Tuxos/Symcon-MyStuff",
+    "version": "1.0",
+    "build": 0,
+    "date": 0,
+    "title": "Tuxos modules for IPSymcon",
+    "description": "Some IPSymcon Modules for my own use. Feel free to adopt, copy or use it as a base for your projects.",
+    "req_ips_version": "4.1"
+}
