@@ -1,8 +1,4 @@
-# Updates und neue Module gibt es nur noch hier: https://bayaro.lima-city.de
-# !ACHTUNG! - !DIESE MODUL-VERSION WIRD NICHT WEITER UNTERSTÜTZT UND WIRD IRGENDWANN ENTFERNT!
-
-
-### IP-Symcon Modul // HostMonitor
+# IP-Symcon Modul // HostMonitor
 ---
 
 ## Dokumentation
