@@ -2,7 +2,7 @@
     "id": "{965381BC-680A-480F-BE9D-DA4A2EDA0114}",
     "name": "HMSonosRemote",
     "type": 3,
-    "vendor": "Tuxos",
+    "vendor": "Homematic",
     "aliases":
     [
         "Homematic Remote for Sonos"

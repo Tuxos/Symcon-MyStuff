@@ -6,7 +6,7 @@
     "version": "1.0",
     "build": 0,
     "date": 0,
-    "title": "Tuxos modules for IPSymcon",
-    "description": "Some IPSymcon Modules for my own use. Feel free to adopt, copy or use it as a base for your projects.",
+    "title": "My modules for IPSymcon",
+    "description": "Some IPSymcon Modules for my own use. Feel free to adopt, copy or use it as a base for your projects. Some modules are from other people, please look into the module files for more information.",
     "req_ips_version": "4.1"
 }
