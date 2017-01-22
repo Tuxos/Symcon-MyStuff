@@ -25,8 +25,11 @@
 			IPS_SetName($InsID, "Display Taster");
 			IPS_SetParent($InsID, $this->InstanceID);
 		}
-		IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipaddressccu":'.$this->ReadPropertyString("ipadressccu").',"serialnumer":'.$this->ReadPropertyString("ipadressccu").'}');
-		@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
+		if (($this->ReadPropertyString("iddisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != ""))
+			{
+				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipaddressccu":'.$this->ReadPropertyString("ipadressccu").',"serialnumer":'.$this->ReadPropertyString("ipadressccu").'}');
+				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
+			}
 
 		if (($this->ReadPropertyString("iddisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != ""))
 			{
