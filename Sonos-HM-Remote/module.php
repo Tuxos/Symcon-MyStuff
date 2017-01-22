@@ -30,7 +30,13 @@
 				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipadress":"'.$this->ReadPropertyString("ipadressccu").'","serialnumber":"'.$this->ReadPropertyString("serialdisplay").'"}');
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
 
-				
+				if (@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID) == false) {
+					$InsID = IPS_CreateInstance("{4FA0F15F-50A6-451C-8B03-E76A425C2B94}");
+					IPS_SetName($InsID, "6fach Taster");
+					IPS_SetParent($InsID, $this->InstanceID);
+				}
+				IPS_SetConfiguration(@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID), '{"serialnumber":"'.$this->ReadPropertyString("serial6t").'"}');
+				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID));
 
 
 			}

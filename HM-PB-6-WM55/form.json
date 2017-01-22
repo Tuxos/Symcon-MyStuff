@@ -1,7 +1,7 @@
 {
     "elements":
     [
-        { "type": "ValidationTextBox" , "name" : "serialnumber", "caption": "Display Seriennummer" }
+        { "type": "ValidationTextBox" , "name" : "serialnumber", "caption": "Taster Seriennummer" }
     ],
     "actions":
     [
