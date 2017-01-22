@@ -72,7 +72,7 @@
 	public function anzeigePause() {
 
 		$temperatur = GetValue($this->ReadPropertyString("idvar"));
-		$displayid = GetValue(IPS_GetObjectIDByName("Display Taster", $this->InstanceID));
+		$displayid = IPS_GetObjectIDByName("Display Taster", $this->InstanceID);
 		$titel = GetValue(IPS_GetObjectIDByName("Title", $this->ReadPropertyString("idsonos")));
 
 		if ($titel == "") {
