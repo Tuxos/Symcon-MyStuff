@@ -3,9 +3,6 @@
   [
 
     { "type": "Label", "label": "####### HostMonitor - by Bayaro (https://bayaro.lima-city.de) #######" },
-    { "type": "Label", "label": "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" },
-    { "type": "Label", "label": "!ACHTUNG! - !DIESE MODUL-VERSION WIRD NICHT WEITER UNTERSTÜTZT UND WIRD IRGENDWANN ENTFERNT!" },
-    { "type": "Label", "label": ">> Weitere Informationen findet ihr hier >> https://bayaro.lima-city.de" },
     { "type": "Label", "label": "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" },    
     { "type": "ValidationTextBox", "name": "HostName", "caption": "Host-Name" },
     { "type": "ValidationTextBox", "name": "HostAdresse", "caption": "Host-IP/URL" },
