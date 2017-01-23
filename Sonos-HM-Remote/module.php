@@ -110,7 +110,7 @@
 					IPS_SetName($eid, "6T Taste unten links kurz");
 				}
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste unten links kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste unten links", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
-				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten links kurz", $this->InstanceID), "SNS_ChangeGroupVolume($sonosid,"-3");");
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten links kurz", $this->InstanceID), "SNS_ChangeGroupVolume($sonosid,'-3');");
 				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste unten links kurz", $this->InstanceID), true);
 
 				if (@IPS_GetEventIDByName("6T Taste unten rechts kurz", $this->InstanceID) != true) {
@@ -119,7 +119,7 @@
 					IPS_SetName($eid, "6T Taste unten rechts kurz");
 				}
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste unten rechts kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste unten rechts", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
-				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten rechts kurz", $this->InstanceID), "SNS_ChangeGroupVolume($sonosid,"3");");
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten rechts kurz", $this->InstanceID), "SNS_ChangeGroupVolume($sonosid,'3');");
 				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste unten rechts kurz", $this->InstanceID), true);
 
 
