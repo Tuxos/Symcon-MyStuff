@@ -64,7 +64,25 @@
 				}
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("when volume change", $this->InstanceID), 1, IPS_GetObjectIDByName("GroupVolume", $this->ReadPropertyString("idsonos")));
 				IPS_SetEventScript(@IPS_GetEventIDByName("when volume change", $this->InstanceID), "HMSR_anzeigeVolume($this->InstanceID);");
-				IPS_SetEventActive(@IPS_GetEventIDByName("when volume change", $this->InstanceID), true);			
+				IPS_SetEventActive(@IPS_GetEventIDByName("when volume change", $this->InstanceID), true);
+
+				if (@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "6T Taste oben links kurz");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste oben links", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), "SNS_Pause($this->ReadPropertyString("idsonos"));");
+				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), true);
+
+				if (@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "6T Taste oben rechts kurz");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste oben rechts", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID), "SNS_Play($this->ReadPropertyString("idsonos"));");
+				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID), true);
 
 			}
 
