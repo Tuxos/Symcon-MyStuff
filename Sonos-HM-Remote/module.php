@@ -219,9 +219,7 @@
 		$playlist2 = $sonosplaylist["Associations"]["1"]["Name"];
 		$playlist3 = $sonosplaylist["Associations"]["2"]["Name"];
 
-		echo $displayid."-".$playlist1.":".$playlist2.":".$playlist3;
-
-		HMDIS_writeDisplay($displayid, $playlist1, $playlist2, $playlist3, "", "", "", "0XF0", "0xC0");
+		HMDIS_writeDisplay($displayid, $playlist1, $playlist2, $playlist3, "", "", "", "0xF0", "0xC0");
 		IPS_Sleep(2000);
 		HMSR_anzeigeTitel($this->InstanceID);
 
@@ -236,7 +234,7 @@
 		$titel = GetValue(IPS_GetObjectIDByName("Title", $this->ReadPropertyString("idsonos")));
 
 		if ($titel == "") {
-			HMDIS_writeDisplay($displayid, $this->ReadPropertyString("zeile1"), $this->ReadPropertyString("zeile2"), $temperatur.$this->ReadPropertyString("postfix"), "", "", "", "0XF0", "0xC0");
+			HMDIS_writeDisplay($displayid, $this->ReadPropertyString("zeile1"), $this->ReadPropertyString("zeile2"), $temperatur.$this->ReadPropertyString("postfix"), "", "", "", "0xF0", "0xC0");
 			}
 
 	}
@@ -248,7 +246,7 @@
 		$volume = GetValue(IPS_GetObjectIDByName("GroupVolume", $this->ReadPropertyString("idsonos")));
 
 		if ($volume != "") {
-			HMDIS_writeDisplay($displayid,  "Volume", $volume, " ", "", "", "", "0XF0", "0xC0");
+			HMDIS_writeDisplay($displayid,  "Volume", $volume, " ", "", "", "", "0xF0", "0xC0");
 			IPS_Sleep(1500);
 			HMSR_anzeigeTitel($this->InstanceID);
 		}
