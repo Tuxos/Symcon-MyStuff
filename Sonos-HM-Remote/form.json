@@ -8,7 +8,11 @@
 	   { "type": "ValidationTextBox" , "name" : "zeile1", "caption": "Anzeige Zeile 1" },
 	   { "type": "ValidationTextBox" , "name" : "zeile2", "caption": "Anzeige Zeile 2" },
 	   { "type": "SelectVariable" , "name" : "idvar", "caption": "Anzeige Variable" },
-	   { "type": "ValidationTextBox" , "name" : "postfix", "caption": "Postfix nach var" }
+	   { "type": "ValidationTextBox" , "name" : "postfix", "caption": "Postfix nach var" },
+	   { "type": "ValidationTextBox" , "name" : "radio1", "caption": "Radio Station 1" },
+	   { "type": "ValidationTextBox" , "name" : "radio2", "caption": "Radio Station 2" },
+	   { "type": "ValidationTextBox" , "name" : "radio3", "caption": "Radio Station 3" }
+
     ],
     "actions":
     [

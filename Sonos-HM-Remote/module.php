@@ -14,6 +14,9 @@
 		$this->RegisterPropertyString("zeile2", "Garten");
 		$this->RegisterPropertyInteger("idvar", "");
 		$this->RegisterPropertyString("postfix", "c");
+		$this->RegisterPropertyString("radio1", "1Live");
+		$this->RegisterPropertyString("radio2", "Antenne Bayern");
+		$this->RegisterPropertyString("radio3", "Bayern 3");
 
 	}
 
@@ -24,6 +27,9 @@
 		if (($this->ReadPropertyString("serialdisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") > 999) and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") > 999))
 			{
 				$sonosid = $this->ReadPropertyString("idsonos");
+				$radio1 = $this->ReadPropertyString("radio1");
+				$radio2 = $this->ReadPropertyString("radio2");
+				$radio3 = $this->ReadPropertyString("radio3");
 
 				if (@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID) == false) {
 					$InsID = IPS_CreateInstance("{5961D2DF-90B1-4B98-A45E-B7717BD383C9}");
@@ -121,6 +127,33 @@
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste unten rechts kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste unten rechts", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
 				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten rechts kurz", $this->InstanceID), "SNS_ChangeGroupVolume($sonosid,'3');");
 				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste unten rechts kurz", $this->InstanceID), true);
+
+				if (@IPS_GetEventIDByName("6T Taste oben links lang", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "6T Taste oben links lang");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste oben links lang", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_LONG", IPS_GetObjectIDByName("Taste oben links", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben links lang", $this->InstanceID), "SNS_SetRadio($sonosid, $radio1);");
+				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste oben links lang", $this->InstanceID), true);
+
+				if (@IPS_GetEventIDByName("6T Taste mitte links lang", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "6T Taste mitte links lang");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste mitte links lang", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_LONG", IPS_GetObjectIDByName("Taste mitte links", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste mitte links lang", $this->InstanceID), "SNS_SetRadio($sonosid, $radio2);");
+				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste mitte links lang", $this->InstanceID), true);
+
+				if (@IPS_GetEventIDByName("6T Taste unten links lang", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "6T Taste unten links lang");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste unten links lang", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_LONG", IPS_GetObjectIDByName("Taste unten links", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten links lang", $this->InstanceID), "SNS_SetRadio($sonosid, $radio3);");
+				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste unten links lang", $this->InstanceID), true);
 
 
 			}
