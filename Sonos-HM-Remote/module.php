@@ -76,7 +76,7 @@
 					IPS_SetName($eid, "6T Taste oben links kurz");
 				}
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste oben links", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
-				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), "SNS_Pause(GetValueInteger(IPS_GetObjectIDByName('Sonos ID'), $_IPS['SELF']));");
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), "SNS_Pause(@GetValueInteger(@IPS_GetObjectIDByName('Sonos ID'), $_IPS['SELF']));");
 				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), true);
 
 				if (@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID) != true) {
