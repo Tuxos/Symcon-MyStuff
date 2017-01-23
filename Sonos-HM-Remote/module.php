@@ -219,8 +219,8 @@
 		$playlist2 = $sonosplaylist["Associations"]["1"]["Name"];
 		$playlist3 = $sonosplaylist["Associations"]["2"]["Name"];
 
-		HMDIS_writeDisplay($displayid, $playlist1, $playlist2, $playlist3, "", "", "", "0xF0", "0xC0");
-		//HMDIS_writeDisplay($displayid,"Es geht!", "Test Zeile 2", "Test Zeile 3" , "0x85", "0x86", "0x87", "0XF3", "0xC4");
+		//HMDIS_writeDisplay($displayid, $playlist1, $playlist2, $playlist3, "", "", "", "0xF0", "0xC0");
+		HMDIS_writeDisplay($displayid,"Es geht!", "Test Zeile 2", "Test Zeile 3" , "0x85", "0x86", "0x87", "0XF3", "0xC4");
 		IPS_Sleep(1500);
 		HMSR_anzeigeTitel($this->InstanceID);
 
