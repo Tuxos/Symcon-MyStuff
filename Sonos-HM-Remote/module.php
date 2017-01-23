@@ -36,7 +36,6 @@
 				$playlist1 = $sonosplaylist['Associations']['0']['Name'];
 				$playlist2 = $sonosplaylist['Associations']['1']['Name'];
 				$playlist3 = $sonosplaylist['Associations']['2']['Name'];
-				$showplaylists = '.$displayid, "'.$playlist1.'", "'.$playlist2.'", "'.$playlist3.'", "", "", "", "0XF0", "0xC0"';
 
 				if (@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID) == false) {
 					$InsID = IPS_CreateInstance("{5961D2DF-90B1-4B98-A45E-B7717BD383C9}");
@@ -47,6 +46,7 @@
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
 
 				$displayid = IPS_GetObjectIDByName("Display Taster", $this->InstanceID);
+				$showplaylists = $displayid.', "'.$playlist1.'", "'.$playlist2.'", "'.$playlist3.'", "", "", "", "0XF0", "0xC0"';
 
 				if (@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID) == false) {
 					$InsID = IPS_CreateInstance("{4FA0F15F-50A6-451C-8B03-E76A425C2B94}");
