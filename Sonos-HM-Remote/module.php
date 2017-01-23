@@ -31,6 +31,10 @@
 				$radio2 = $this->ReadPropertyString("radio2");
 				$radio3 = $this->ReadPropertyString("radio3");
 
+				$sonosplaylist = IPS_GetVariableProfile("Playlist.SONOS");
+
+				print_r($sonosplaylist);
+
 				if (@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID) == false) {
 					$InsID = IPS_CreateInstance("{5961D2DF-90B1-4B98-A45E-B7717BD383C9}");
 					IPS_SetName($InsID, "Display Taster");
@@ -155,6 +159,32 @@
 				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten links lang", $this->InstanceID), "SNS_SetRadio($sonosid, '$radio3');SNS_Play($sonosid);");
 				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste unten links lang", $this->InstanceID), true);
 
+				if (@IPS_GetEventIDByName("6T Taste oben rechts lang", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "6T Taste oben rechts lang");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste oben rechts lang", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_LONG", IPS_GetObjectIDByName("Taste oben rechts", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben rechts lang", $this->InstanceID), "SNS_SetRadio($sonosid, '$radio1');SNS_Play($sonosid);");
+				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste oben rechts lang", $this->InstanceID), true);
+
+				if (@IPS_GetEventIDByName("6T Taste mitte rechts lang", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "6T Taste mitte rechts lang");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste mitte rechts lang", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_LONG", IPS_GetObjectIDByName("Taste mitte rechts", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste mitte rechts lang", $this->InstanceID), "SNS_SetRadio($sonosid, '$radio2');SNS_Play($sonosid);");
+				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste mitte rechts lang", $this->InstanceID), true);
+
+				if (@IPS_GetEventIDByName("6T Taste unten rechts lang", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "6T Taste unten rechts lang");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste unten rechts lang", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_LONG", IPS_GetObjectIDByName("Taste unten rechts", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten rechts lang", $this->InstanceID), "SNS_SetRadio($sonosid, '$radio3');SNS_Play($sonosid);");
+				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste unten rechts lang", $this->InstanceID), true);
 
 			}
 
