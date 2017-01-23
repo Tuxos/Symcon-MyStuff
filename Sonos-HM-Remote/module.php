@@ -33,7 +33,7 @@
 
 				$sonosplaylist = IPS_GetVariableProfile("Playlist.SONOS");
 
-				echo $sonosplaylist->Associations->Name[0];
+				print_r($sonosplaylist->Associations);
 
 				if (@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID) == false) {
 					$InsID = IPS_CreateInstance("{5961D2DF-90B1-4B98-A45E-B7717BD383C9}");
