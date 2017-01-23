@@ -57,6 +57,15 @@
 				IPS_SetEventScript(@IPS_GetEventIDByName("when var change", $this->InstanceID), "HMSR_anzeigePause($this->InstanceID);");
 				IPS_SetEventActive(@IPS_GetEventIDByName("when var change", $this->InstanceID), true);
 
+				if (@IPS_GetEventIDByName("when volume change", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "when volume change");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("when volume change", $this->InstanceID), 1, IPS_GetObjectIDByName("GroupVolume", $this->ReadPropertyString("idsonos")));
+				IPS_SetEventScript(@IPS_GetEventIDByName("when volume change", $this->InstanceID), "HMSR_anzeigeVolume($this->InstanceID);");
+				IPS_SetEventActive(@IPS_GetEventIDByName("when volume change", $this->InstanceID), true);			
+
 			}
 
 		if (($this->ReadPropertyString("serialdisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") != "") and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") != ""))
@@ -79,8 +88,22 @@
 			HMDIS_writeDisplay($displayid, $this->ReadPropertyString("zeile1"), $this->ReadPropertyString("zeile2"), $temperatur.$this->ReadPropertyString("postfix"), "", "", "", "0XF0", "0xC0");
 			}
 
+	}
 
+	// Anzeige wenn Lautstärke geändert wird
+	public function anzeigeVolume() {
+
+		$displayid = IPS_GetObjectIDByName("Display Taster", $this->InstanceID);
+		$volume = GetValue(IPS_GetObjectIDByName("GroupVolume", $this->ReadPropertyString("idsonos")));
+
+		if ($volume != "") {
+			HMDIS_writeDisplay($displayid,  "Volume", $volume, " ", "", "", "", "0XF0", "0xC0");
+			IPS_Sleep(1500);
+			HMSR_anzeigeTitel($this->InstanceID);
 		}
+
+	}
+
 
 	// Anzeige wenn Musik spielt
 	public function anzeigeTitel() {
@@ -105,7 +128,7 @@
 			HMSR_anzeigePause($this->InstanceID);
 			} else {
 			HMDIS_writeDisplay($displayid, $titel1, $titel2, $artist, "", "", "", "0XF0", "0xC0");
-		}
+			}
 
 		}
 
