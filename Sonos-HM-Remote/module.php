@@ -26,6 +26,7 @@
 
 		if (($this->ReadPropertyString("serialdisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") > 999) and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") > 999))
 			{
+
 				$sonosid = $this->ReadPropertyString("idsonos");
 				$radio1 = $this->ReadPropertyString("radio1");
 				$radio2 = $this->ReadPropertyString("radio2");
@@ -43,6 +44,8 @@
 				}
 				IPS_SetConfiguration(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID), '{"ipadress":"'.$this->ReadPropertyString("ipadressccu").'","serialnumber":"'.$this->ReadPropertyString("serialdisplay").'"}');
 				@IPS_ApplyChanges(@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID));
+
+				$displayid = IPS_GetObjectIDByName("Display Taster", $this->InstanceID);
 
 				if (@IPS_GetInstanceIDByName("6fach Taster", $this->InstanceID) == false) {
 					$InsID = IPS_CreateInstance("{4FA0F15F-50A6-451C-8B03-E76A425C2B94}");
@@ -186,6 +189,15 @@
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste unten rechts lang", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_LONG", IPS_GetObjectIDByName("Taste unten rechts", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
 				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste unten rechts lang", $this->InstanceID), "SNS_SetPlaylist($sonosid, '$playlist3');SNS_Play($sonosid);");
 				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste unten rechts lang", $this->InstanceID), true);
+
+				if (@IPS_GetEventIDByName("Display Taste unten kurz", $this->InstanceID) != true) {
+					$eid = IPS_CreateEvent(0);
+					IPS_SetParent($eid, $this->InstanceID);
+					IPS_SetName($eid, "Display Taste unten kurz");
+				}
+				IPS_SetEventTrigger(@IPS_GetEventIDByName("Display Taste unten kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste unten", IPS_GetObjectIDByName("Display Taster", $this->InstanceID))));
+				IPS_SetEventScript(@IPS_GetEventIDByName("Display Taste unten kurz", $this->InstanceID), "HMDIS_writeDisplay($displayid,  $playlist1, $playlist2, $playlist3, "", "", "", "0XF0", "0xC0");");
+				IPS_SetEventActive(@IPS_GetEventIDByName("Display Taste unten kurz", $this->InstanceID), true);
 
 			}
 
