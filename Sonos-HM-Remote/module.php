@@ -21,11 +21,12 @@
 
 		parent::ApplyChanges();
 
-		$this->RegisterVariableInteger("sonosid", "Sonos ID", "~UnixTimestamp", 1);
+		//$this->RegisterVariableInteger("sonosid", "Sonos ID", "~UnixTimestamp", 1);
 
 		if (($this->ReadPropertyString("serialdisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") > 999) and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") > 999))
 			{
-				SetValueInteger(IPS_GetObjectIDByName("Sonos ID", $this->InstanceID), $this->ReadPropertyString("idsonos"));
+				//SetValueInteger(IPS_GetObjectIDByName("Sonos ID", $this->InstanceID), $this->ReadPropertyString("idsonos"));
+				$sonosid = $this->ReadPropertyString("idsonos");
 
 				if (@IPS_GetInstanceIDByName("Display Taster", $this->InstanceID) == false) {
 					$InsID = IPS_CreateInstance("{5961D2DF-90B1-4B98-A45E-B7717BD383C9}");
@@ -76,7 +77,7 @@
 					IPS_SetName($eid, "6T Taste oben links kurz");
 				}
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste oben links", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
-				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), "SNS_Pause(44321);");
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), "SNS_Pause($sonosid);");
 				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste oben links kurz", $this->InstanceID), true);
 
 				if (@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID) != true) {
@@ -85,7 +86,7 @@
 					IPS_SetName($eid, "6T Taste oben rechts kurz");
 				}
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste oben rechts", IPS_GetObjectIDByName("6fach Taster", $this->InstanceID))));
-				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID), "SNS_Play(GetValueInteger(IPS_GetObjectIDByName('Sonos ID'), $_IPS['SELF']));");
+				IPS_SetEventScript(@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID), "SNS_Play($sonosid);");
 				IPS_SetEventActive(@IPS_GetEventIDByName("6T Taste oben rechts kurz", $this->InstanceID), true);
 
 			}
