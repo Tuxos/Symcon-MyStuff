@@ -213,11 +213,11 @@
 	// Anzeige wenn keine Musik spielt
 	public function anzeigePlaylists() {
 
-		$sonosplaylist = IPS_GetVariableProfile("Playlist.SONOS");
-		$playlist1 = $sonosplaylist['Associations']['0']['Name'];
-		$playlist2 = $sonosplaylist['Associations']['1']['Name'];
-		$playlist3 = $sonosplaylist['Associations']['2']['Name'];
 		$displayid = IPS_GetObjectIDByName("Display Taster", $this->InstanceID);
+		$sonosplaylist = IPS_GetVariableProfile("Playlist.SONOS");
+		$playlist1 = $sonosplaylist["Associations"]["0"]["Name"];
+		$playlist2 = $sonosplaylist["Associations"]["1"]["Name"];
+		$playlist3 = $sonosplaylist["Associations"]["2"]["Name"];
 
 		HMDIS_writeDisplay($displayid, $playlist1, $playlist2, $playlist3, "", "", "", "0XF0", "0xC0");
 		IPS_Sleep(2000);
