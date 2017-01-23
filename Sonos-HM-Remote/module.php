@@ -219,6 +219,8 @@
 		$playlist2 = $sonosplaylist["Associations"]["1"]["Name"];
 		$playlist3 = $sonosplaylist["Associations"]["2"]["Name"];
 
+		echo $displayid."-".$playlist1.":".$playlist2.":".$playlist3;
+
 		HMDIS_writeDisplay($displayid, $playlist1, $playlist2, $playlist3, "", "", "", "0XF0", "0xC0");
 		IPS_Sleep(2000);
 		HMSR_anzeigeTitel($this->InstanceID);
