@@ -21,7 +21,7 @@
 
 		parent::ApplyChanges();
 
-		$this->RegisterVariableInteger("sonosid", "Sonos ID", "",0);
+		$this->RegisterVariableInteger("sonosid", "Sonos ID", "~UnixTimestamp", 1);
 
 		if (($this->ReadPropertyString("serialdisplay") != "") and ($this->ReadPropertyString("ipadressccu") != "") and ($this->ReadPropertyString("idsonos") > 999) and ($this->ReadPropertyString("serial6t") != "") and ($this->ReadPropertyString("idvar") > 999))
 			{
