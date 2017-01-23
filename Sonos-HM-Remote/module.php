@@ -196,7 +196,7 @@
 					IPS_SetName($eid, "Display Taste unten kurz");
 				}
 				IPS_SetEventTrigger(@IPS_GetEventIDByName("Display Taste unten kurz", $this->InstanceID), 0, IPS_GetObjectIDByName("PRESS_SHORT", IPS_GetObjectIDByName("Taste unten", IPS_GetObjectIDByName("Display Taster", $this->InstanceID))));
-				IPS_SetEventScript(@IPS_GetEventIDByName("Display Taste unten kurz", $this->InstanceID), 'HMDIS_writeDisplay($displayid, "$playlist1", "$playlist2", "$playlist3", "", "", "", "0XF0", "0xC0");');
+				IPS_SetEventScript(@IPS_GetEventIDByName("Display Taste unten kurz", $this->InstanceID), "HMDIS_writeDisplay($displayid, '$playlist1', '$playlist2', '$playlist3', '', '', '', '0XF0', '0xC0');");
 				IPS_SetEventActive(@IPS_GetEventIDByName("Display Taste unten kurz", $this->InstanceID), true);
 
 			}
